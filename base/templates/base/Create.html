@@ -2,7 +2,19 @@
 
 {% block content %}
 <style>
-    .formo{
+   @media screen and (max-device-width: 570px){
+        .formo{
+        text-align: center;
+        position: relative;
+        border: 2px solid brown;
+        padding: 5rem 5rem 5rem 5rem;
+        border-radius: 10px;
+        justify-content: center;
+
+    }
+    }
+    @media screen and (min-device-width:600px) {
+        .formo{
         text-align: center;
         border: 2px solid brown;
         position: absolute;
@@ -12,6 +24,7 @@
         transform: translate(-50%,-50%);
         border-radius: 10px;
 
+    }
     }
     #bt{
         background-color: blue;

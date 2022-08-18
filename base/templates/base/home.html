@@ -1,0 +1,106 @@
+{% extends 'main.html' %}
+{% block content %}
+<style type="text/css">
+
+    @media screen and (min-device-width:570px) {
+        .table{
+            margin-top: 5%;
+            width: 50%;
+        }
+    }
+    
+    .bt2{
+        background-color: blue;
+        color: white;
+        padding: 1px;
+        border-radius: 2px;
+    }
+    #icon{
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    .gg-add {
+ box-sizing: border-box;
+ position: relative;
+ display: block;
+ width: 33px;
+ height: 33px;
+ border: 2px solid;
+ transform: scale(var(--ggs,1));
+ border-radius: 22px;
+}
+
+.gg-add::after,
+.gg-add::before {
+ content: "";
+ display: block;
+ box-sizing: border-box;
+ position: absolute;
+ width: 10px;
+ height: 2px;
+ background: black;
+ border-radius: 5px;
+ top: 8px;
+ left: 4px;
+ margin-top: 5px;
+ margin-left: 5px;
+}
+
+.gg-add::after {
+ width: 2px;
+ height: 10px;
+ top: 4px;
+ left: 8px
+} 
+  table,th,td{
+    border: 1px solid brown;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .table{
+    margin: 0 auto;
+  }
+
+  li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px 4px;
+  }
+ th{
+    background-color: blue;
+    color: aliceblue;
+  }
+h2 {
+    text-align: center;
+}
+    
+</style>
+<div class="bt">
+    <div id="icon"><i class="gg-add"></i></div>
+    <button class="bt2"><a href="{% url 'CreateUser' %}" style="color: white; text-decoration: none;">Add user</a></button>
+</div>
+<hr/>
+<h2>DATA</h2>
+<div class="table">
+    <table style="width:100%;">
+        <tr>
+            <th>S.NO</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PH-NO</th>
+            <th>ACTIONS</th>
+        </tr>
+    {% for person in users %}
+    <tr>
+        <td>{{person.id}}</td>
+        <td>{{person.Person_name}}</td>
+        <td>{{person.Person_email}}</td>
+        <td>{{person.Person_phno}}</td>
+        <td><li><a href="{% url 'DeletePerson' person.id %}"><i class="gg-user-remove"></i></a>remove</li><li><a href="{% url 'UpdatePerson' person.id %}"><i class="gg-edit-markup"></i></a>Edit</li></td>
+    </tr>
+        
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

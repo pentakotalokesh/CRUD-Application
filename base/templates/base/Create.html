@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .formo{
+        text-align: center;
+        border: 2px solid brown;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding: 5rem;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+
+    }
+    #bt{
+        background-color: blue;
+        margin-top: 10px;
+        color: aliceblue;
+        width: 60%;
+        text-align: center;
+
+    }
+    #msg{
+        text-align: center;
+        border: 2px solid brown;
+        width: 10%;
+        padding: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        background-color: black;
+        color: white;
+    }
+</style>
+<div class="formo">
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Username" />
+        <p></p>
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Password" />
+        <p></p>
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="email" />
+
+        <input id = "bt" type="submit" value="CREATE ACCOUNT" /><br>
+    </form>
+    {% if messages %}
+    <div id="msg">
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock content %}

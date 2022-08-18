@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style type="text/css">
+    #bt{
+        background-color: blue;
+        color: white;
+    }
+</style>
+<h2>Add User Details</h2>
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input id = "bt" type="submit" value="ADD">
+    </form>
+</div>
+{% endblock content %}

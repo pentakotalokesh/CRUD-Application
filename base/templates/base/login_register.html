@@ -1,0 +1,82 @@
+{% extends 'main.html' %} 
+
+{% block content %}
+<style type="text/css">
+    @media screen and (max-device-width: 570px){
+        .formo{
+        text-align: center;
+        border: 2px solid brown;
+        justify-content: center;
+        padding: 5rem;
+        border-radius: 10px;
+        width: 50%;
+
+    }
+}
+.formo{
+        text-align: center;
+        border: 2px solid brown;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding: 5rem;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+
+    }
+    #bt{
+        background-color: blue;
+        margin-top: 10px;
+        color: aliceblue;
+        width: 50%;
+    }
+    #bt2{
+        height: 25px;
+        background-color: blue;
+        color: aliceblue;
+    }
+    a{
+        color: aliceblue;
+        text-decoration: none;
+    }
+    #signup{
+        margin-top: 10px;
+    }
+    #msg{
+        text-align: center;
+        border: 2px solid brown;
+        width: 10%;
+        padding: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        background-color: black;
+        color: white;
+    }
+</style>
+<div class="formo">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Username" />
+        <p></p>
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Password" />
+        <p></p>
+
+        <input id = "bt" type="submit" value="SIGN IN" /><br>
+    </form>
+    <div id="signup">
+    <h6>If you don't have account</h6>
+    <button id="bt2"><a href="{% url 'register' %}">CREATE ACCOUNT</a></button>
+    </div>
+</div>
+{% if messages %}
+<div id="msg">
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock content %}

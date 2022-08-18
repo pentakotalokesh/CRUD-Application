@@ -1,0 +1,48 @@
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<style type="text/css">
+    #search{
+        float: right;
+        margin-bottom: 0px;
+    }
+    #login{
+        float: right;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    }
+    #id{
+        float: left;
+    }
+    .material-symbols-outlined{
+        margin-left: 10px;
+        float: right;
+    }
+    .bt2{
+        background-color: blue;
+        color: white;
+        padding: 1px;
+        border-radius: 2px;
+        display: inline-block;
+    }
+</style>
+<span class="material-symbols-outlined" style="color: brown; font-size:2rem">person</span>
+<div id="login">
+    {% if request.user.is_authenticated %}
+    <div class="bt">
+        <button class="bt2"><a href="{% url 'logout' %}" style="color: white; text-decoration: none;">SIGNOUT</a></button>
+        <small id = "name">{{user.username}}</small>
+    </div>
+    {% else %}
+    <div class="bt">
+        <button class="bt2"><a href="{% url 'login' %}" style="color: white; text-decoration: none;">SIGNIN</a></button>
+    </div>
+    {% endif %}
+    </div>
+<h1>CRUD APPLICATION</h1>  
+<form method="GET" action="{% url 'home' %}">
+    <input id = "search" type="text" name="q" placeholder="Search" />
+</form>
+<sub>Create Read Update Delete</sub>
+
+<hr />

@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style type="text/css">
+    #bt{
+        background-color: blue;
+        color: aliceblue;
+    }
+</style>
+<form method="POST" action="">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{obj.Person_name}}"?</p>
+    <p><a href="{{request.META.HTTP_REFERER}}"><span class="material-symbols-outlined">
+        arrow_back
+        </span></a></p>
+        
+    <input id="bt" type="submit" value="confirm" />
+</form>
+{% endblock content %}
